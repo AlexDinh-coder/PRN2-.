@@ -37,10 +37,13 @@
                              Text="{Binding Path=Manufacturer, Mode=OneWay}"
                              DataContext="{Binding ElementName=lvCars, Path=SelectedItem}" />
                     <Label Name="lbPrice" Content="Price" />
-                    <TextBox Name="txtPrice" HorizontalAlignment="Stretch"
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="$" VerticalAlignment="Center"/>
+                        <TextBox Name="txtPrice"
                              Height="25"
                              Text="{Binding Path=Price, Mode=OneWay}"
-                             DataContext="{Binding ElementName=lvCars, Path=SelectedItem}" />
+                             DataContext="{Binding ElementName=lvCars, Path=SelectedItem}" PreviewTextInput="txtPrice_PreviewTextInput" Width="394" />
+                    </StackPanel>
                     <Label Name="lbReleasedYear" Content="ReleasedYear" />
                     <TextBox Name="txtReleasedYear" HorizontalAlignment="Stretch"
                              Height="25"
@@ -59,7 +62,7 @@
                             Click="btnDelete_Click" />
                 </StackPanel>
                 <!--ListView Control-->
-                <ListView Grid.Row="2" Name="lvCars" Width="Auto" Height="Auto">
+                <ListView Grid.Row="2" Name="lvCars" Width="Auto" Height="Auto" MouseDoubleClick="lvCars_MouseDoubleClick">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Car ID" Width="100"
