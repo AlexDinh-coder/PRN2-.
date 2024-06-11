@@ -38,12 +38,13 @@ namespace AutomobileWPFApp
                     if (car.Price < 0) throw new("Price should over positive value");
                     if (car.CarId < 0) throw new("CarID should over positive value");
                 }
+                return car;
             }
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show(ex.Message, "Get car");
             }
-            return car;
+            return null;
         }//end GetCarObject
         public void LoadCarList()
         {
@@ -65,6 +66,7 @@ namespace AutomobileWPFApp
             try
             {
                 Car car = GetCarObject();
+                if (car == null) return;
                 carRepository.InsertCar(car);
                 LoadCarList();
                 System.Windows.MessageBox.Show($"{car.CarName} inserted successfully", "Insert car");
@@ -79,6 +81,7 @@ namespace AutomobileWPFApp
             try
             {
                 Car car = GetCarObject();
+                if (car == null) return;
                 carRepository.UpdateCar(car);
                 LoadCarList();
                 System.Windows.MessageBox.Show($"{car.CarName} updated successfully", "Update car");
@@ -93,6 +96,7 @@ namespace AutomobileWPFApp
             try
             {
                 Car car = GetCarObject();
+                if (car == null) return;
                 carRepository.DeleteCar(car);
                 LoadCarList();
                 System.Windows.MessageBox.Show($"{car.CarName} deleted successfully", "Delete car");
