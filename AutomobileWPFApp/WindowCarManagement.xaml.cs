@@ -36,6 +36,7 @@ namespace AutomobileWPFApp
                 {
                     if (car.ReleasedYear < 2000 || car.ReleasedYear > 2100) throw new("ReleasedYear must in 2000-2100");
                     if (car.Price < 0) throw new("Price should over positive value");
+                    if (car.CarId < 0) throw new("CarID should over positive value");
                 }
             }
             catch (Exception ex)
